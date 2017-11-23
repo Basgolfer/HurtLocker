@@ -1,17 +1,33 @@
-import org.apache.commons.io.IOUtils;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
-    public String readRawDataToString() throws Exception{
-        ClassLoader classLoader = getClass().getClassLoader();
-        String result = IOUtils.toString(classLoader.getResourceAsStream("RawData.txt"));
-        return result;
+    public static void main(String[] args) {
+        ItemParser itemParser = new ItemParser();
+        ArrayList<String> items;
+        items = itemParser.putEachItemInStringArrayList();
+        for(String item : items) {
+            System.out.println(item);
+        }
+
+
+//        Pattern p = Pattern.compile("(name):\\w+;(price):\\d+\\.\\d+;(type):\\w+;(expiration):(\\d+[/]\\d+[/]\\d+)##", Pattern.CASE_INSENSITIVE);
+//        Matcher m = p.matcher(output);
+//        boolean b = m.matches();
+//        String[] stringArray = output.split("##");
+//        for(int i = 0; i < stringArray.length; i++) {
+//            String[] anotherArray = stringArray[i].split("[;^%*!@]");
+//            //System.out.println(stringArray[i]);
+//            //System.out.println();
+//            for (int j = 0; j < anotherArray.length; j++) {
+//                System.out.println(anotherArray[j]);
+//            }
+//            System.out.println();
+//        }
+
     }
 
-    public static void main(String[] args) throws Exception{
-        String output = (new Main()).readRawDataToString();
-        System.out.println(output);
 
-    }
 }
